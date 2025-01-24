@@ -3,9 +3,9 @@ use App\Models\Team;
 function createDefaultUser()
 {
     $user = \App\Models\User::create([
-        'name' => env('DEFAULT_USER_NAME'),
-        'email' => env('DEFAULT_USER_EMAIL'),
-        'password' => bcrypt(env('DEFAULT_USER_PASSWORD')),
+        'name' => config('DEFAULT_USER_NAME'),
+        'email' => config('DEFAULT_USER_EMAIL'),
+        'password' => bcrypt(config('DEFAULT_USER_PASSWORD')),
     ]);
 
     $team = Team::create([
@@ -22,9 +22,9 @@ function createDefaultUser()
 function createDefaultTeacher()
 {
     $teacher = \App\Models\User::create([
-        'name' => env('DEFAULT_TEACHER_NAME'),
-        'email' => env('DEFAULT_TEACHER_EMAIL'),
-        'password' => bcrypt(env('DEFAULT_TEACHER_PASSWORD')),
+        'name' => config('DEFAULT_TEACHER_NAME'),
+        'email' => config('DEFAULT_TEACHER_EMAIL'),
+        'password' => bcrypt(config('DEFAULT_TEACHER_PASSWORD')),
     ]);
 
     $team = Team::create([

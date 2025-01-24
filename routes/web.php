@@ -1,10 +1,13 @@
 <?php
 
+use App\Http\Controllers\VideosController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+
 
 Route::middleware([
     'auth:sanctum',
@@ -15,3 +18,7 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+
+Route::get('/videos/{id}', [VideosController::class, 'show'])->name('videos.show');
+
