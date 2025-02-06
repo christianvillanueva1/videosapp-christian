@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\DefaultVideoHelper;
 use App\Models\Video;
 use Tests\Unit\VideosTest;
 

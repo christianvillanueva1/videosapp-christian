@@ -64,4 +64,56 @@ El projecte consisteix en desenvolupar una aplicació semblant a YouTube, on els
             - `users_can_view_videos()`.
             - `users_cannot_view_not_existing_videos()`.
 
-Aquest document resumeix el projecte i les tasques realitzades en els dos primers sprints.
+
+## Sprint 3
+
+1. **Corregir errors del 2n Sprint**:
+    - Solucionats els errors detectats durant el segon sprint per garantir el correcte funcionament del sistema.
+
+2. **Instal·lació de `spatie/laravel-permission`**:
+    - Instal·lació del paquet `spatie/laravel-permission` per gestionar rols i permisos dels usuaris.
+    - Seguir la documentació oficial per a la seva instal·lació: [spatie/laravel-permission](https://spatie.be/docs/laravel-permission/v6/installation-laravel).
+
+3. **Migració per afegir el camp `super_admin`**:
+    - Creació d'una migració per afegir un nou camp `super_admin` a la taula d'usuaris per identificar als superadministradors.
+
+4. **Model d'usuaris**:
+    - Afegida la funció `testedBy()` i `isSuperAdmin()` al model d'usuari per facilitar la verificació de si un usuari és un superadministrador.
+
+5. **Funció `create_default_professor` i gestió de rols**:
+    - Afegit el superadmin al professor a la funció `create_default_professor` de helpers.
+    - Creació de la funció `add_personal_team()` per separar la creació del `team` dels usuaris.
+    - Creació de les funcions `create_regular_user()`, `create_video_manager_user()` i `create_superadmin_user()` per generar usuaris amb rols específics i credencials per defecte:
+        - **create_regular_user()**: (regular, regular@videosapp.com, 123456789).
+        - **create_video_manager_user()**: (Video Manager, videosmanager@videosapp.com, 123456789).
+        - **create_superadmin_user()**: (Super Admin, superadmin@videosapp.com, 123456789).
+    - Creació de les funcions `define_gates()` i `create_permissions()` per definir permisos i portes d'accés.
+
+6. **Registre de polítiques d'autorització i definició de portes d'accés**:
+    - A la funció `book` d'`app/Providers/AppServiceProvider`, es registren les polítiques d'autorització i es defineixen les portes d'accés per gestionar els permisos de l'aplicació.
+
+7. **Seeder d'usuaris i permisos per defecte**:
+    - Afegits els usuaris per defecte amb els rols de superadmin, usuari regular i video manager al `DatabaseSeeder`.
+
+8. **Publicació de stubs**:
+    - Publicació dels stubs per personalitzar els fitxers de l'aplicació, seguint l'exemple de la [documentació de Laravel](https://laravel-news.com/customizing-stubs-in-laravel).
+
+9. **Creació del test `VideosManageControllerTest`**:
+    - Creació del test per validar la gestió de vídeos:
+        - **`user_with_permissions_can_manage_videos()`**: Verifica que els usuaris amb permisos poden gestionar vídeos.
+        - **`regular_users_cannot_manage_videos()`**: Verifica que els usuaris regulars no poden gestionar vídeos.
+        - **`guest_users_cannot_manage_videos()`**: Verifica que els usuaris convidats no poden gestionar vídeos.
+        - **`superadmins_can_manage_videos()`**: Verifica que els superadministradors poden gestionar vídeos.
+        - Funcions de login per a cada tipus d'usuari: `loginAsVideoManager()`, `loginAsSuperAdmin()`, `loginAsRegularUser()`.
+
+10. **Creació del test `UserTest`**:
+    - Creació del test per validar la funció `isSuperAdmin()` i comprovar si un usuari és un superadministrador.
+
+11. **Documentació dels termes**:
+    - Afegit a `resources/markdown/terms` el que s'ha fet en aquest sprint per mantenir la documentació actualitzada.
+
+12. **Comprovació amb Larastan**:
+    - Comprovats tots els fitxers creats durant aquest sprint amb Larastan per garantir la qualitat del codi i detectar possibles errors de tipus.
+
+
+Aquest document resumeix el projecte i les tasques realitzades en els tres primers sprints.

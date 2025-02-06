@@ -10,6 +10,8 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles;
+use Tests\Unit\HelperTest;
 
 class User extends Authenticatable
 {
@@ -21,9 +23,20 @@ class User extends Authenticatable
     use HasTeams;
     use Notifiable;
     use TwoFactorAuthenticatable;
+    use HasRoles;
 
     public mixed $ownedTeams;
     public mixed $id;
+
+    public function isSuperAdmin(): bool
+    {
+        return $this->super_admin === true;
+    }
+
+    public function testedBy()
+    {
+        return HelperTest::class;
+    }
 
     /**
      * The attributes that are mass assignable.
@@ -35,6 +48,7 @@ class User extends Authenticatable
         'email',
         'password',
         'current_team_id',
+        'super_admin'
     ];
 
     /**
