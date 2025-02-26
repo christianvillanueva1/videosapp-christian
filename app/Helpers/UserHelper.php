@@ -9,9 +9,9 @@ use App\Models\User;
 function createDefaultUser()
 {
     $user = User::create([
-        'name' => config('DEFAULT_USER_NAME'),
-        'email' => config('DEFAULT_USER_EMAIL'),
-        'password' => bcrypt(config('DEFAULT_USER_PASSWORD')),
+        'name' => config('users.default_user.name'),
+        'email' => config('users.default_user.email'),
+        'password' => bcrypt(config('users.default_user.password')),
     ]);
 
     $user->save();
@@ -24,10 +24,11 @@ function createDefaultUser()
 
 function createDefaultTeacher()
 {
+
     $teacher = User::create([
-        'name' => config('DEFAULT_TEACHER_NAME'),
-        'email' => config('DEFAULT_TEACHER_EMAIL'),
-        'password' => bcrypt(config('DEFAULT_TEACHER_PASSWORD')),
+        'name' => config('users.default_teacher.name'),
+        'email' => config('users.default_teacher.email'),
+        'password' => bcrypt(config('users.default_teacher.password')),
         'super_admin' => true,
     ]);
 
@@ -35,16 +36,19 @@ function createDefaultTeacher()
 
     add_personal_team($teacher, 'Default Teacher Team');
 
-
     return $teacher;
 }
 
 
 function add_personal_team(User $user, string $teamName)
 {
+
+    $user->save();
+
     $team = Team::create([
         'name' => $teamName,
         'user_id' => $user->id,
+        'personal_team' => true,
     ]);
 
     $user->team()->associate($team);
@@ -59,6 +63,9 @@ function create_regular_user()
         'email' => 'regular@videosapp.com',
         'password' => bcrypt('123456789'),
     ]);
+    $user->save();
+
+    add_personal_team($user, 'Regular Team');
 
     return $user;
 }
@@ -70,6 +77,10 @@ function create_video_manager_user()
         'email' => 'videosmanager@videosapp.com',
         'password' => bcrypt('123456789'),
     ]);
+    $user->save();
+
+    add_personal_team($user, 'Video Manager Team');
+
     return $user;
 }
 
@@ -82,7 +93,12 @@ function create_superadmin_user()
         'email' => 'superadmin@videosapp.com',
         'password' => bcrypt('123456789'),
         'super_admin' => true,
+        'id' => 1,
     ]);
+    $user->save();
+
+    add_personal_team($user, 'Super Admin Team');
+
     return $user;
 }
 
@@ -101,10 +117,8 @@ function define_gates()
 function create_permissions()
 {
     $permissions = [
-        'create videos',
-        'edit videos',
-        'delete videos',
-        'manage users'
+        'manage users',
+        'manage videos'
     ];
 
     foreach ($permissions as $permission) {
@@ -113,7 +127,7 @@ function create_permissions()
 
     $roles = [
         'regular' => [],
-        'video_manager' => ['create videos', 'edit videos', 'delete videos'],
+        'video_manager' => ['manage videos'],
         'super_admin' => Permission::pluck('name')->toArray(),
     ];
 

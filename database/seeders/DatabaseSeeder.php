@@ -18,27 +18,25 @@ class DatabaseSeeder extends Seeder
         create_permissions();
 
         $superAdmin = create_superadmin_user();
-        $superAdmin->save();
         $regularUser = create_regular_user();
-        $regularUser->save();
         $videoManager = create_video_manager_user();
+
+        $superAdmin->save();
+        $regularUser->save();
         $videoManager->save();
 
+        $superAdmin->refresh()->assignRole('super_admin');
+        $regularUser->refresh()->assignRole('regular');
+        $videoManager->refresh()->assignRole('video_manager');
 
-        // Assignar rols als usuaris
-        $superAdmin->assignRole('super_admin');
-        $regularUser->assignRole('regular');
-        $videoManager->assignRole('video_manager');
 
-        // Crear altres usuaris per defecte
         createDefaultTeacher();
         createDefaultUser();
 
-        // Crear vídeos per defecte
         DefaultVideoHelper::createDefaultVideo();
+        DefaultVideoHelper::createDefaultVideo2();
+        DefaultVideoHelper::createDefaultVideo3();
 
-        // Definir portes d'accés (Gates)
         define_gates();
-
     }
 }

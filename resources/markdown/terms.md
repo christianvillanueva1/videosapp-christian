@@ -115,5 +115,95 @@ El projecte consisteix en desenvolupar una aplicació semblant a YouTube, on els
 12. **Comprovació amb Larastan**:
     - Comprovats tots els fitxers creats durant aquest sprint amb Larastan per garantir la qualitat del codi i detectar possibles errors de tipus.
 
+## Sprint 4
+
+1. **Corregir errors del 3r sprint**:
+    - Revisar i corregir els errors relacionats amb l'accés a la ruta `/videosmanage` en funció dels permisos dels usuaris. Si no s'ha comprovat als testos, modificar-ho per garantir que només els usuaris amb els permisos adequats poden accedir.
+
+2. **Crear `VideosManageController`**:
+    - Implementar les funcions següents en el controlador `VideosManageController`:
+        - `testedby`
+        - `index`
+        - `store`
+        - `show`
+        - `edit`
+        - `update`
+        - `delete`
+        - `destroy`
+
+3. **Crear funció `index` a `VideosController`**:
+    - Crear la funció `index` per a mostrar tots els vídeos.
+
+4. **Revisar vídeos creats a helpers**:
+    - Comprovar que tinguem 3 vídeos creats a `helpers` i que estiguin afegits al `databaseSeeder`.
+
+5. **Crear vistes per al CRUD de vídeos**:
+    - Crear les vistes per al CRUD de vídeos que només poden veure els usuaris amb els permisos adequats:
+        - `resources/views/videos/manage/index.blade.php`
+        - `resources/views/videos/manage/create.blade.php`
+        - `resources/views/videos/manage/edit.blade.php`
+        - `resources/views/videos/manage/delete.blade.php`
+
+6. **Afegir taula de CRUD a `index.blade.php`**:
+    - Afegir una taula amb la llista dels vídeos al fitxer `index.blade.php`.
+
+7. **Afegir formulari de creació a `create.blade.php`**:
+    - Afegir un formulari per a la creació de vídeos al fitxer `create.blade.php`. Utilitzar l'atribut `data-qa` per facilitar la identificació en els tests.
+
+8. **Afegir taula de CRUD a `edit.blade.php`**:
+    - Afegir la taula del CRUD de vídeos a `edit.blade.php`.
+
+9. **Afegir confirmació a `delete.blade.php`**:
+    - Afegir una confirmació d'eliminació del vídeo a `delete.blade.php`.
+
+10. **Crear vista `index.blade.php` de vídeos**:
+    - Crear la vista `resources/views/videos/index.blade.php` per mostrar tots els vídeos, similar a la pàgina principal de YouTube. En clicar sobre un vídeo, es redirigirà al detall del vídeo (funció `show` del sprint anterior).
+
+11. **Modificar test `user_with_permissions_can_manage_videos()`**:
+    - Modificar el test `user_with_permissions_can_manage_videos()` per garantir que hi hagi 3 vídeos creats.
+
+12. **Crear permisos per a vídeos al `helpers`**:
+    - Crear els permisos per al CRUD de vídeos a `helpers` i assignar-los als usuaris corresponents.
+
+13. **Crear tests a `VideoTest`**:
+    - Crear les següents funcions a `VideoTest`:
+        - `user_without_permissions_can_see_default_videos_page`
+        - `user_with_permissions_can_see_default_videos_page`
+        - `not_logged_users_can_see_default_videos_page`
+
+14. **Crear tests a `VideosManageControllerTest`**:
+    - Crear les següents funcions a `VideosManageControllerTest`:
+        - `loginAsVideoManager`
+        - `loginAsSuperAdmin`
+        - `loginAsRegularUser`
+        - `user_with_permissions_can_see_add_videos`
+        - `user_without_videos_manage_create_cannot_see_add_videos`
+        - `user_with_permissions_can_store_videos`
+        - `user_without_permissions_cannot_store_videos`
+        - `user_with_permissions_can_destroy_videos`
+        - `user_without_permissions_cannot_destroy_videos`
+        - `user_with_permissions_can_see_edit_videos`
+        - `user_without_permissions_cannot_see_edit_videos`
+        - `user_with_permissions_can_update_videos`
+        - `user_without_permissions_cannot_update_videos`
+        - `user_with_permissions_can_manage_videos`
+        - `regular_users_cannot_manage_videos`
+        - `guest_users_cannot_manage_videos`
+        - `superadmins_can_manage_videos`
+
+15. **Crear rutes per al CRUD de vídeos**:
+    - Crear les rutes de `videos/manage` per al CRUD de vídeos amb el middleware corresponent.
+    - La ruta `index` de vídeos serà accessible tant si l'usuari està logejat com si no, mentre que les rutes del CRUD seran accessibles només quan l'usuari estigui logejat.
+
+16. **Afegir navbar i footer a la plantilla**:
+    - Afegir una barra de navegació i un peu de pàgina a la plantilla `resources/layouts/videosapp` per permetre la navegació entre les pàgines.
+
+17. **Afegir contingut a `resources/markdown/terms`**:
+    - Afegir a `resources/markdown/terms` la informació treballada en aquest sprint.
+
+18. **Comprovar amb Larastan**:
+    - Comprovar tots els fitxers creats amb Larastan per garantir que el codi és correcte i no hi ha errors.
+
+
 
 Aquest document resumeix el projecte i les tasques realitzades en els tres primers sprints.

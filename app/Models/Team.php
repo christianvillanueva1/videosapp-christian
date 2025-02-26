@@ -13,7 +13,7 @@ class Team extends JetstreamTeam
     /** @use HasFactory<\Database\Factories\TeamFactory> */
     use HasFactory;
 
-    public mixed $owner;
+//    public mixed $owner;
 
     /**
      * The attributes that are mass assignable.
@@ -22,6 +22,7 @@ class Team extends JetstreamTeam
      */
     protected $fillable = [
         'name',
+        'user_id',
         'personal_team',
     ];
 

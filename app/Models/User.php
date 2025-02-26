@@ -25,8 +25,8 @@ class User extends Authenticatable
     use TwoFactorAuthenticatable;
     use HasRoles;
 
-    public mixed $ownedTeams;
-    public mixed $id;
+//    public mixed $ownedTeams;
+//    public mixed $id;
 
     public function isSuperAdmin(): bool
     {
