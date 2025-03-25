@@ -128,11 +128,13 @@ function create_permissions()
     $roles = [
         'regular' => [],
         'video_manager' => ['manage videos'],
-        'super_admin' => Permission::pluck('name')->toArray(),
     ];
 
     foreach ($roles as $role => $perms) {
         $roleInstance = Role::firstOrCreate(['name' => $role]);
         $roleInstance->syncPermissions($perms);
     }
+
+    $superAdmin = Role::firstOrCreate(['name' => 'super_admin']);
+    $superAdmin->syncPermissions(Permission::all());
 }

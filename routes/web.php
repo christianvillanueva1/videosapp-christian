@@ -26,6 +26,7 @@ Route::get('/video/{id}', [VideosController::class, 'show'])->name('videos.show'
 Route::get('/videos', [VideosController::class, 'index'])->name('videos.index');
 
 // Rutes de gestió de vídeos amb protecció de permisos
+
 Route::middleware(['auth', 'can:manage-videos'])->group(function () {
     Route::get('/videos/manage', [VideosManageController::class, 'index'])->name('videos.manage.index');
     Route::get('/videos/manage/create', [VideosManageController::class, 'create'])->name('videos.manage.create');
