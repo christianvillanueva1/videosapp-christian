@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Tests\Feature\Users\UserManageTest;
 use Tests\Unit\UserTest;
 
 class UsersManageController extends Controller
@@ -50,7 +51,7 @@ class UsersManageController extends Controller
     }
     public function testedBy()
     {
-        return UserTest::class;
+        return UserManageTest::class;
     }
     public function delete(User $user)
     {
