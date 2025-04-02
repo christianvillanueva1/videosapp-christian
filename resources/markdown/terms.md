@@ -204,6 +204,79 @@ El projecte consisteix en desenvolupar una aplicació semblant a YouTube, on els
 18. **Comprovar amb Larastan**:
     - Comprovar tots els fitxers creats amb Larastan per garantir que el codi és correcte i no hi ha errors.
 
+## Sprint 5
+
+1. **Corregir errors del 4t Sprint**:
+    - Revisar i corregir els errors detectats durant el quart sprint per garantir que tot funcioni correctament.
+
+2. **Afegir el camp `user_id` a la taula de vídeos**:
+    - Modificar la taula de vídeos per incloure un camp `user_id`, que emmagatzemarà l'usuari que ha afegit el vídeo.
+    - Modificar el controlador, el model i els helpers per gestionar aquesta nova columna.
+
+3. **Solucionar errors dels tests**:
+    - Si algun test dels sprints anteriors falla a causa de les modificacions, s'haurà de revisar i corregir els errors per garantir que els tests passin correctament.
+
+4. **Crear `UsersManageController`**:
+    - Implementar les següents funcions en el controlador `UsersManageController`:
+        - `testedBy`
+        - `index`
+        - `store`
+        - `edit`
+        - `update`
+        - `delete`
+        - `destroy`
+
+5. **Crear funció `index` i `show` a `UsersController`**:
+    - Crear la funció `index` per mostrar tots els usuaris.
+    - Crear la funció `show` per veure els detalls d'un usuari concret.
+
+6. **Crear vistes per al CRUD d'usuaris**:
+    - Crear les vistes per al CRUD d'usuaris que només podran veure els usuaris amb permisos adequats:
+        - `resources/views/users/manage/index.blade.php`
+        - `resources/views/users/manage/create.blade.php`
+        - `resources/views/users/manage/edit.blade.php`
+        - `resources/views/users/manage/delete.blade.php`
+
+7. **Afegir taula de CRUD d'usuaris a `index.blade.php`**:
+    - Afegir una taula amb la llista dels usuaris al fitxer `index.blade.php`.
+
+8. **Afegir formulari de creació a `create.blade.php`**:
+    - Afegir un formulari per a la creació d'usuaris al fitxer `create.blade.php`, utilitzant l'atribut `data-qa` per facilitar la identificació en els tests.
+
+9. **Afegir taula de CRUD d'usuaris a `edit.blade.php`**:
+    - Afegir la taula del CRUD d'usuaris a `edit.blade.php`.
+
+10. **Afegir confirmació a `delete.blade.php`**:
+    - Afegir una confirmació d'eliminació d'un usuari a `delete.blade.php`.
+
+11. **Crear vista `index.blade.php` per mostrar tots els usuaris**:
+    - Crear la vista `resources/views/users/index.blade.php` per mostrar tots els usuaris, amb una funcionalitat de cerca.
+    - En clicar sobre un usuari, es redirigirà a la pàgina de detalls de l'usuari.
+
+12. **Crear permisos per al CRUD d'usuaris**:
+    - Crear els permisos per al CRUD d'usuaris a `helpers` i assignar-los als usuaris corresponents.
+
+13. **Crear tests per a la gestió d'usuaris**:
+    - Crear els següents tests per verificar el funcionament del CRUD d'usuaris:
+        - `user_with_permissions_can_manage_users()`
+        - `regular_users_cannot_manage_users()`
+        - `guest_users_cannot_manage_users()`
+        - `superadmins_can_manage_users()`
+        - `user_without_permissions_can_see_users_list()`
+        - `user_with_permissions_can_see_users_list()`
+
+14. **Crear rutes per al CRUD d'usuaris**:
+    - Crear les rutes de `users/manage` per al CRUD d'usuaris amb el middleware corresponent.
+    - La ruta `index` d'usuaris serà accessible tant si l'usuari està logejat com si no, mentre que les rutes del CRUD seran accessibles només quan l'usuari estigui logejat.
+
+15. **Afegir navbar i footer a la plantilla**:
+    - Afegir una barra de navegació i un peu de pàgina a la plantilla `resources/layouts/videosapp` per permetre la navegació entre les pàgines.
+
+16. **Afegir contingut a `resources/markdown/terms`**:
+    - Afegir a `resources/markdown/terms` la informació treballada en aquest sprint.
+
+17. **Comprovar amb Larastan**:
+    - Comprovar tots els fitxers creats amb Larastan per garantir que el codi és correcte i no hi ha errors.
 
 
 Aquest document resumeix el projecte i les tasques realitzades en els tres primers sprints.

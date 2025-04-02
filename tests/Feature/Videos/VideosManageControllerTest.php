@@ -176,16 +176,18 @@ class VideosManageControllerTest extends TestCase
 
     public function test_user_with_permissions_can_destroy_videos()
     {
-        // Crear un vídeo de prova
+
+        // Login com a VideoManager
+        $videoManager = $this->loginAsVideoManager();
+
         $video = Video::create([
             'title' => 'Video de prova',
             'description' => 'Descripció del vídeo de prova.',
             'url' => 'https://www.youtube.com/watch?v=example',
             'published_at' => now(),
-        ]);
+            'user_id' => $videoManager->id,
 
-        // Login com a VideoManager
-        $videoManager = $this->loginAsVideoManager();
+        ]);
 
         // Fer la petició DELETE per eliminar el vídeo
         $response = $this->actingAs($videoManager)->delete(route('videos.manage.destroy', $video->id));
@@ -202,16 +204,18 @@ class VideosManageControllerTest extends TestCase
 
     public function test_user_without_permissions_cannot_destroy_videos()
     {
-        // Crear un vídeo de prova
+
+        // Login com a usuari sense permisos per gestionar vídeos
+        $regularUser = $this->loginAsRegularUser();
+
         $video = Video::create([
             'title' => 'Video de prova',
             'description' => 'Descripció del vídeo de prova.',
             'url' => 'https://www.youtube.com/watch?v=example',
             'published_at' => now(),
-        ]);
+            'user_id' => $regularUser->id,
 
-        // Login com a usuari sense permisos per gestionar vídeos
-        $regularUser = $this->loginAsRegularUser();
+        ]);
 
         // Fer la petició DELETE per intentar eliminar el vídeo
         $response = $this->actingAs($regularUser)->delete(route('videos.manage.destroy', $video->id));
@@ -227,16 +231,20 @@ class VideosManageControllerTest extends TestCase
 
     public function test_user_with_permissions_can_see_edit_videos()
     {
+
+
+        // Login com a usuari amb permisos per gestionar vídeos
+        $videoManager = $this->loginAsVideoManager();
+
         // Crear un vídeo de prova
         $video = Video::create([
             'title' => 'Video de prova',
             'description' => 'Descripció del vídeo de prova.',
             'url' => 'https://www.youtube.com/watch?v=example',
             'published_at' => now(),
-        ]);
+            'user_id' => $videoManager->id,
 
-        // Login com a usuari amb permisos per gestionar vídeos
-        $videoManager = $this->loginAsVideoManager();
+        ]);
 
         // Fer la petició GET per accedir a la pàgina d'editar el vídeo
         $response = $this->actingAs($videoManager)->get(route('videos.manage.edit', $video->id));
@@ -250,16 +258,20 @@ class VideosManageControllerTest extends TestCase
 
     public function test_user_without_permissions_cannot_see_edit_videos()
     {
+
+
+        // Login com a usuari sense permisos per gestionar vídeos
+        $regularUser = $this->loginAsRegularUser();
+
         // Crear un vídeo de prova
         $video = Video::create([
             'title' => 'Video de prova',
             'description' => 'Descripció del vídeo de prova.',
             'url' => 'https://www.youtube.com/watch?v=example',
             'published_at' => now(),
-        ]);
+            'user_id' => $regularUser->id,
 
-        // Login com a usuari sense permisos per gestionar vídeos
-        $regularUser = $this->loginAsRegularUser();
+        ]);
 
         // Fer la petició GET per accedir a la pàgina d'editar el vídeo
         $response = $this->actingAs($regularUser)->get(route('videos.manage.edit', $video->id));
@@ -270,17 +282,19 @@ class VideosManageControllerTest extends TestCase
 
     public function test_user_with_permissions_can_update_videos()
     {
+
+
+        // Login com a usuari amb permisos per gestionar vídeos (per exemple, un 'video_manager')
+        $videoManager = $this->loginAsVideoManager();
+
         // Crear un vídeo de prova
         $video = Video::create([
             'title' => 'Video de prova',
             'description' => 'Descripció del vídeo de prova.',
             'url' => 'https://www.youtube.com/watch?v=example',
             'published_at' => now(),
-
+            'user_id' => $videoManager->id,
         ]);
-
-        // Login com a usuari amb permisos per gestionar vídeos (per exemple, un 'video_manager')
-        $videoManager = $this->loginAsVideoManager();
 
         // Fer la petició PUT per actualitzar el vídeo
         $response = $this->actingAs($videoManager)->put(route('videos.manage.update', $video->id), [
@@ -305,16 +319,19 @@ class VideosManageControllerTest extends TestCase
 
     public function test_user_without_permissions_cannot_update_videos()
     {
+
+
+        // Login com a usuari sense permisos per gestionar vídeos (per exemple, un usuari regular)
+        $regularUser = $this->loginAsRegularUser();
+
         // Crear un vídeo de prova
         $video = Video::create([
             'title' => 'Video de prova',
             'description' => 'Descripció del vídeo de prova.',
             'url' => 'https://www.youtube.com/watch?v=example',
             'published_at' => now(),
+            'user_id' => $regularUser->id,
         ]);
-
-        // Login com a usuari sense permisos per gestionar vídeos (per exemple, un usuari regular)
-        $regularUser = $this->loginAsRegularUser();
 
         // Fer la petició PUT per intentar actualitzar el vídeo
         $response = $this->actingAs($regularUser)->put(route('videos.manage.update', $video->id), [

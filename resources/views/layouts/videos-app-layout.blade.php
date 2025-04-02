@@ -76,6 +76,7 @@
 <!-- Navbar -->
 <nav class="navbar">
     <ul class="navbar-nav">
+        <li><a href="{{ route('users.manage.index') }}">Gestió de Usuaris</a></li>
         <li><a href="{{ route('videos.manage.index') }}">Gestió de Vídeos</a></li>
         <li><a href="{{ route('videos.index') }}">Inici</a></li>
     </ul>

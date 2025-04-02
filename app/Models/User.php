@@ -28,6 +28,13 @@ class User extends Authenticatable
 //    public mixed $ownedTeams;
 //    public mixed $id;
 
+    use HasFactory;
+
+    public function videos()
+    {
+        return $this->hasMany(Video::class, 'user_id'); // Un usuari té molts vídeos
+    }
+
     public function isSuperAdmin(): bool
     {
         return $this->super_admin === true;
@@ -89,7 +96,6 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Team::class, 'current_team_id');
     }
-
 
 
 }

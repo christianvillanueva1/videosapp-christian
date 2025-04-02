@@ -59,6 +59,7 @@ class VideosManageController extends Controller
             'previous' => $validated['previous'],
             'next' => $validated['next'],
             'series_id' => $validated['series_id'],
+            'user_id' => auth()->id(),
         ]);
 
         return redirect()->route('videos.manage.index')->with('success', 'Video created successfully');
