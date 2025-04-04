@@ -76,9 +76,17 @@
 <!-- Navbar -->
 <nav class="navbar">
     <ul class="navbar-nav">
-        <li><a href="{{ route('users.manage.index') }}">Gestió de Usuaris</a></li>
-        <li><a href="{{ route('videos.manage.index') }}">Gestió de Vídeos</a></li>
-        <li><a href="{{ route('videos.index') }}">Inici</a></li>
+        <li><a href="{{ route('videos.index') }}">Videos</a></li>
+
+        @if (Auth::check())
+            <li><a href="{{ route('users.index') }}">Usuaris</a></li>
+        @endif
+        @if (Auth::check() && Auth::user()->can('manage-users'))
+            <li><a href="{{ route('users.manage.index') }}">Gestió de Usuaris</a></li>
+        @endif
+        @if (Auth::check() && Auth::user()->can('manage-videos'))
+            <li><a href="{{ route('videos.manage.index') }}">Gestió de Vídeos</a></li>
+        @endif
     </ul>
 </nav>
 
