@@ -1,9 +1,12 @@
 # Guia del projecte i sprints
 
 ## Resum del projecte
-El projecte consisteix en desenvolupar una aplicació semblant a YouTube, on els usuaris poden pujar vídeos amb metadades com el títol, la descripció i l'URL.
+
+El projecte consisteix en desenvolupar una aplicació semblant a YouTube, on els usuaris poden pujar vídeos amb metadades
+com el títol, la descripció i l'URL.
 
 ## Sprint 1
+
 1. **Gestió d'usuaris**:
     - Implementació de la funcionalitat per crear usuaris amb les seves funcions associades.
 
@@ -18,17 +21,21 @@ El projecte consisteix en desenvolupar una aplicació semblant a YouTube, on els
     - Creació de helpers a la carpeta `app`.
 
 4. **Configuració de credencials**:
-    - Configuració de les credencials dels usuaris a `config` perquè utilitzin el fitxer `.env` de manera predeterminada.
+    - Configuració de les credencials dels usuaris a `config` perquè utilitzin el fitxer `.env` de manera
+      predeterminada.
 
 ## Sprint 2
+
 1. **Correcció d'errors**:
     - Solucionats els errors detectats en el primer sprint.
 
 2. **Configuració de PHPUnit**:
-    - Modificació del fitxer PHPUnit per utilitzar una base de dades temporal durant els tests, evitant afectar la base de dades real.
+    - Modificació del fitxer PHPUnit per utilitzar una base de dades temporal durant els tests, evitant afectar la base
+      de dades real.
 
 3. **Migració de vídeos**:
-    - Creació de la migració amb els camps: `id`, `title`, `description`, `url`, `published_at`, `previous`, `next`, `series_id`.
+    - Creació de la migració amb els camps: `id`, `title`, `description`, `url`, `published_at`, `previous`, `next`,
+      `series_id`.
     - Ús de URLs de vídeos de YouTube per als inserts de mostra.
 
 4. **Controlador de vídeos**:
@@ -64,7 +71,6 @@ El projecte consisteix en desenvolupar una aplicació semblant a YouTube, on els
             - `users_can_view_videos()`.
             - `users_cannot_view_not_existing_videos()`.
 
-
 ## Sprint 3
 
 1. **Corregir errors del 2n Sprint**:
@@ -72,31 +78,37 @@ El projecte consisteix en desenvolupar una aplicació semblant a YouTube, on els
 
 2. **Instal·lació de `spatie/laravel-permission`**:
     - Instal·lació del paquet `spatie/laravel-permission` per gestionar rols i permisos dels usuaris.
-    - Seguir la documentació oficial per a la seva instal·lació: [spatie/laravel-permission](https://spatie.be/docs/laravel-permission/v6/installation-laravel).
+    - Seguir la documentació oficial per a la seva
+      instal·lació: [spatie/laravel-permission](https://spatie.be/docs/laravel-permission/v6/installation-laravel).
 
 3. **Migració per afegir el camp `super_admin`**:
-    - Creació d'una migració per afegir un nou camp `super_admin` a la taula d'usuaris per identificar als superadministradors.
+    - Creació d'una migració per afegir un nou camp `super_admin` a la taula d'usuaris per identificar als
+      superadministradors.
 
 4. **Model d'usuaris**:
-    - Afegida la funció `testedBy()` i `isSuperAdmin()` al model d'usuari per facilitar la verificació de si un usuari és un superadministrador.
+    - Afegida la funció `testedBy()` i `isSuperAdmin()` al model d'usuari per facilitar la verificació de si un usuari
+      és un superadministrador.
 
 5. **Funció `create_default_professor` i gestió de rols**:
     - Afegit el superadmin al professor a la funció `create_default_professor` de helpers.
     - Creació de la funció `add_personal_team()` per separar la creació del `team` dels usuaris.
-    - Creació de les funcions `create_regular_user()`, `create_video_manager_user()` i `create_superadmin_user()` per generar usuaris amb rols específics i credencials per defecte:
+    - Creació de les funcions `create_regular_user()`, `create_video_manager_user()` i `create_superadmin_user()` per
+      generar usuaris amb rols específics i credencials per defecte:
         - **create_regular_user()**: (regular, regular@videosapp.com, 123456789).
         - **create_video_manager_user()**: (Video Manager, videosmanager@videosapp.com, 123456789).
         - **create_superadmin_user()**: (Super Admin, superadmin@videosapp.com, 123456789).
     - Creació de les funcions `define_gates()` i `create_permissions()` per definir permisos i portes d'accés.
 
 6. **Registre de polítiques d'autorització i definició de portes d'accés**:
-    - A la funció `book` d'`app/Providers/AppServiceProvider`, es registren les polítiques d'autorització i es defineixen les portes d'accés per gestionar els permisos de l'aplicació.
+    - A la funció `book` d'`app/Providers/AppServiceProvider`, es registren les polítiques d'autorització i es
+      defineixen les portes d'accés per gestionar els permisos de l'aplicació.
 
 7. **Seeder d'usuaris i permisos per defecte**:
     - Afegits els usuaris per defecte amb els rols de superadmin, usuari regular i video manager al `DatabaseSeeder`.
 
 8. **Publicació de stubs**:
-    - Publicació dels stubs per personalitzar els fitxers de l'aplicació, seguint l'exemple de la [documentació de Laravel](https://laravel-news.com/customizing-stubs-in-laravel).
+    - Publicació dels stubs per personalitzar els fitxers de l'aplicació, seguint l'exemple de
+      la [documentació de Laravel](https://laravel-news.com/customizing-stubs-in-laravel).
 
 9. **Creació del test `VideosManageControllerTest`**:
     - Creació del test per validar la gestió de vídeos:
@@ -104,7 +116,8 @@ El projecte consisteix en desenvolupar una aplicació semblant a YouTube, on els
         - **`regular_users_cannot_manage_videos()`**: Verifica que els usuaris regulars no poden gestionar vídeos.
         - **`guest_users_cannot_manage_videos()`**: Verifica que els usuaris convidats no poden gestionar vídeos.
         - **`superadmins_can_manage_videos()`**: Verifica que els superadministradors poden gestionar vídeos.
-        - Funcions de login per a cada tipus d'usuari: `loginAsVideoManager()`, `loginAsSuperAdmin()`, `loginAsRegularUser()`.
+        - Funcions de login per a cada tipus d'usuari: `loginAsVideoManager()`, `loginAsSuperAdmin()`,
+          `loginAsRegularUser()`.
 
 10. **Creació del test `UserTest`**:
     - Creació del test per validar la funció `isSuperAdmin()` i comprovar si un usuari és un superadministrador.
@@ -113,12 +126,15 @@ El projecte consisteix en desenvolupar una aplicació semblant a YouTube, on els
     - Afegit a `resources/markdown/terms` el que s'ha fet en aquest sprint per mantenir la documentació actualitzada.
 
 12. **Comprovació amb Larastan**:
-    - Comprovats tots els fitxers creats durant aquest sprint amb Larastan per garantir la qualitat del codi i detectar possibles errors de tipus.
+    - Comprovats tots els fitxers creats durant aquest sprint amb Larastan per garantir la qualitat del codi i detectar
+      possibles errors de tipus.
 
 ## Sprint 4
 
 1. **Corregir errors del 3r sprint**:
-    - Revisar i corregir els errors relacionats amb l'accés a la ruta `/videosmanage` en funció dels permisos dels usuaris. Si no s'ha comprovat als testos, modificar-ho per garantir que només els usuaris amb els permisos adequats poden accedir.
+    - Revisar i corregir els errors relacionats amb l'accés a la ruta `/videosmanage` en funció dels permisos dels
+      usuaris. Si no s'ha comprovat als testos, modificar-ho per garantir que només els usuaris amb els permisos
+      adequats poden accedir.
 
 2. **Crear `VideosManageController`**:
     - Implementar les funcions següents en el controlador `VideosManageController`:
@@ -148,7 +164,8 @@ El projecte consisteix en desenvolupar una aplicació semblant a YouTube, on els
     - Afegir una taula amb la llista dels vídeos al fitxer `index.blade.php`.
 
 7. **Afegir formulari de creació a `create.blade.php`**:
-    - Afegir un formulari per a la creació de vídeos al fitxer `create.blade.php`. Utilitzar l'atribut `data-qa` per facilitar la identificació en els tests.
+    - Afegir un formulari per a la creació de vídeos al fitxer `create.blade.php`. Utilitzar l'atribut `data-qa` per
+      facilitar la identificació en els tests.
 
 8. **Afegir taula de CRUD a `edit.blade.php`**:
     - Afegir la taula del CRUD de vídeos a `edit.blade.php`.
@@ -157,7 +174,8 @@ El projecte consisteix en desenvolupar una aplicació semblant a YouTube, on els
     - Afegir una confirmació d'eliminació del vídeo a `delete.blade.php`.
 
 10. **Crear vista `index.blade.php` de vídeos**:
-    - Crear la vista `resources/views/videos/index.blade.php` per mostrar tots els vídeos, similar a la pàgina principal de YouTube. En clicar sobre un vídeo, es redirigirà al detall del vídeo (funció `show` del sprint anterior).
+    - Crear la vista `resources/views/videos/index.blade.php` per mostrar tots els vídeos, similar a la pàgina principal
+      de YouTube. En clicar sobre un vídeo, es redirigirà al detall del vídeo (funció `show` del sprint anterior).
 
 11. **Modificar test `user_with_permissions_can_manage_videos()`**:
     - Modificar el test `user_with_permissions_can_manage_videos()` per garantir que hi hagi 3 vídeos creats.
@@ -193,10 +211,12 @@ El projecte consisteix en desenvolupar una aplicació semblant a YouTube, on els
 
 15. **Crear rutes per al CRUD de vídeos**:
     - Crear les rutes de `videos/manage` per al CRUD de vídeos amb el middleware corresponent.
-    - La ruta `index` de vídeos serà accessible tant si l'usuari està logejat com si no, mentre que les rutes del CRUD seran accessibles només quan l'usuari estigui logejat.
+    - La ruta `index` de vídeos serà accessible tant si l'usuari està logejat com si no, mentre que les rutes del CRUD
+      seran accessibles només quan l'usuari estigui logejat.
 
 16. **Afegir navbar i footer a la plantilla**:
-    - Afegir una barra de navegació i un peu de pàgina a la plantilla `resources/layouts/videosapp` per permetre la navegació entre les pàgines.
+    - Afegir una barra de navegació i un peu de pàgina a la plantilla `resources/layouts/videosapp` per permetre la
+      navegació entre les pàgines.
 
 17. **Afegir contingut a `resources/markdown/terms`**:
     - Afegir a `resources/markdown/terms` la informació treballada en aquest sprint.
@@ -214,7 +234,8 @@ El projecte consisteix en desenvolupar una aplicació semblant a YouTube, on els
     - Modificar el controlador, el model i els helpers per gestionar aquesta nova columna.
 
 3. **Solucionar errors dels tests**:
-    - Si algun test dels sprints anteriors falla a causa de les modificacions, s'haurà de revisar i corregir els errors per garantir que els tests passin correctament.
+    - Si algun test dels sprints anteriors falla a causa de les modificacions, s'haurà de revisar i corregir els errors
+      per garantir que els tests passin correctament.
 
 4. **Crear `UsersManageController`**:
     - Implementar les següents funcions en el controlador `UsersManageController`:
@@ -241,7 +262,8 @@ El projecte consisteix en desenvolupar una aplicació semblant a YouTube, on els
     - Afegir una taula amb la llista dels usuaris al fitxer `index.blade.php`.
 
 8. **Afegir formulari de creació a `create.blade.php`**:
-    - Afegir un formulari per a la creació d'usuaris al fitxer `create.blade.php`, utilitzant l'atribut `data-qa` per facilitar la identificació en els tests.
+    - Afegir un formulari per a la creació d'usuaris al fitxer `create.blade.php`, utilitzant l'atribut `data-qa` per
+      facilitar la identificació en els tests.
 
 9. **Afegir taula de CRUD d'usuaris a `edit.blade.php`**:
     - Afegir la taula del CRUD d'usuaris a `edit.blade.php`.
@@ -250,7 +272,8 @@ El projecte consisteix en desenvolupar una aplicació semblant a YouTube, on els
     - Afegir una confirmació d'eliminació d'un usuari a `delete.blade.php`.
 
 11. **Crear vista `index.blade.php` per mostrar tots els usuaris**:
-    - Crear la vista `resources/views/users/index.blade.php` per mostrar tots els usuaris, amb una funcionalitat de cerca.
+    - Crear la vista `resources/views/users/index.blade.php` per mostrar tots els usuaris, amb una funcionalitat de
+      cerca.
     - En clicar sobre un usuari, es redirigirà a la pàgina de detalls de l'usuari.
 
 12. **Crear permisos per al CRUD d'usuaris**:
@@ -267,10 +290,12 @@ El projecte consisteix en desenvolupar una aplicació semblant a YouTube, on els
 
 14. **Crear rutes per al CRUD d'usuaris**:
     - Crear les rutes de `users/manage` per al CRUD d'usuaris amb el middleware corresponent.
-    - La ruta `index` d'usuaris serà accessible tant si l'usuari està logejat com si no, mentre que les rutes del CRUD seran accessibles només quan l'usuari estigui logejat.
+    - La ruta `index` d'usuaris serà accessible tant si l'usuari està logejat com si no, mentre que les rutes del CRUD
+      seran accessibles només quan l'usuari estigui logejat.
 
 15. **Afegir navbar i footer a la plantilla**:
-    - Afegir una barra de navegació i un peu de pàgina a la plantilla `resources/layouts/videosapp` per permetre la navegació entre les pàgines.
+    - Afegir una barra de navegació i un peu de pàgina a la plantilla `resources/layouts/videosapp` per permetre la
+      navegació entre les pàgines.
 
 16. **Afegir contingut a `resources/markdown/terms`**:
     - Afegir a `resources/markdown/terms` la informació treballada en aquest sprint.
@@ -278,5 +303,157 @@ El projecte consisteix en desenvolupar una aplicació semblant a YouTube, on els
 17. **Comprovar amb Larastan**:
     - Comprovar tots els fitxers creats amb Larastan per garantir que el codi és correcte i no hi ha errors.
 
+## 6è Sprint
 
-Aquest document resumeix el projecte i les tasques realitzades en els tres primers sprints.
+1. **Corregir errors del 5è Sprint**
+
+- Es van revisar i corregir els errors detectats durant el 5è Sprint per garantir el bon funcionament de l'aplicació.
+
+2. **Modificar el codi per corregir fallades en els tests**
+
+- Es van revisar i corregir els tests que van fallar a causa de les modificacions realitzades durant aquest Sprint i els
+  anteriors.
+
+3. **Modificar vídeos per assignar-los a sèries**
+
+- Es va afegir la capacitat d'assignar un vídeo a una sèrie, modificant el model de vídeos i afegint la relació 1:N amb
+  el model de sèrie.
+
+4. **Permetre als usuaris regulars crear vídeos**
+
+- A `VideoController` es van afegir les funcions del CRUD per als usuaris regulars, i es van crear els botons
+  corresponents a la vista de vídeos per permetre aquesta funcionalitat.
+
+5. **Crear la migració de les sèries**
+
+- Es va crear la migració per a la taula de **sèries**, amb els següents camps:
+    - `id`
+    - `title`
+    - `description`
+    - `image` (nullable)
+    - `user_name`
+    - `user_photo_url` (nullable)
+    - `published_at` (nullable)
+
+6. **Crear el model de sèries**
+
+- El model de **sèries** va incloure les funcions següents:
+    - `testedBy()`
+    - `videos()`: per la relació 1:N amb els vídeos.
+    - `getFormattedCreatedAtAttribute()`
+    - `getFormattedForHumansCreatedAtAttribute()`
+    - `getCreatedAtTimestampAttribute()`
+
+7. **Afegir relació entre vídeos i sèries**
+
+- Al model de **vídeos** es va afegir la relació 1:N amb el model de **sèries** per associar cada vídeo amb una sèrie
+  específica.
+
+8. **Crear **SeriesManageController****
+
+- Es va crear el controlador **SeriesManageController** amb les següents funcions:
+    - `testedBy()`
+    - `index()`
+    - `store()`
+    - `edit()`
+    - `update()`
+    - `delete()`
+    - `destroy()`
+
+9. **Crear **SeriesController****
+
+- Es va crear el controlador **SeriesController** amb les funcions:
+    - `index()`: per mostrar totes les sèries.
+    - `show()`: per mostrar els detalls d'una sèrie específica.
+
+10. **Crear la funció `create_series()` a helpers**
+
+- A la funció `create_series()` de helpers es van afegir 3 sèries per defecte.
+
+11. **Crear les vistes per al CRUD de sèries**
+
+- Es van crear les vistes del CRUD de sèries en les següents rutes:
+    - `resources/views/series/manage/index.blade.php`
+    - `resources/views/series/manage/create.blade.php`
+    - `resources/views/series/manage/edit.blade.php`
+    - `resources/views/series/manage/delete.blade.php`
+
+12. **Afegir taula de CRUD a `index.blade.php`**
+
+- Es va afegir una taula amb la llista de sèries a la vista **index.blade.php** per mostrar totes les sèries
+  disponibles.
+
+13. **Afegir formulari a `create.blade.php`**
+
+- Es va afegir un formulari per crear sèries a la vista **create.blade.php**, amb l'atribut `data-qa` per facilitar la
+  identificació durant els tests.
+
+14. **Afegir taula a `edit.blade.php`**
+
+- Es va afegir la taula del CRUD de sèries a la vista **edit.blade.php** per permetre l'edició de les sèries existents.
+
+15. **Afegir confirmació a `delete.blade.php`**
+
+- A la vista **delete.blade.php** es va afegir la confirmació d'eliminació d'una sèrie i dels vídeos associats a aquesta
+  sèrie. En cas que no es vulguin eliminar els vídeos, la relació es desassigna.
+
+16. **Crear vista `index.blade.php` per mostrar totes les sèries**
+
+- Es va crear la vista **index.blade.php** per mostrar totes les sèries disponibles amb una funcionalitat de cerca. Al
+  fer clic sobre una sèrie, es mostren els vídeos associats.
+
+17. **Crear permisos per al CRUD de sèries**
+
+- Es van crear els permisos per al CRUD de sèries a helpers i es van assignar als usuaris amb el rol de **superadmin**.
+
+18. **Crear test `SerieTest`**
+
+- A `test/Unit/SerieTest`, es va crear la funció `serie_have_videos()` per verificar que una sèrie tingui vídeos
+  associats correctament.
+
+19. **Crear test `SeriesManageControllerTest`**
+
+- A **SeriesManageControllerTest**, es van crear les següents funcions:
+    - `loginAsVideoManager()`
+    - `loginAsSuperAdmin()`
+    - `loginAsRegularUser()`
+    - `user_with_permissions_can_see_add_series()`
+    - `user_without_series_manage_create_cannot_see_add_series()`
+    - `user_with_permissions_can_store_series()`
+    - `user_without_permissions_cannot_store_series()`
+    - `user_with_permissions_can_destroy_series()`
+    - `user_without_permissions_cannot_destroy_series()`
+    - `user_with_permissions_can_see_edit_series()`
+    - `user_without_permissions_cannot_see_edit_series()`
+    - `user_with_permissions_can_update_series()`
+    - `user_without_permissions_cannot_update_series()`
+    - `user_with_permissions_can_manage_series()`
+    - `regular_users_cannot_manage_series()`
+    - `guest_users_cannot_manage_series()`
+    - `videomanagers_can_manage_series()`
+    - `superadmins_can_manage_series()`
+
+20. **Crear rutes per al CRUD de sèries**
+
+- Es van crear les rutes de **series/manage** per al CRUD de sèries amb el middleware corresponent. Les rutes de l'índex
+  i el **show** només són accessibles quan l'usuari està logejat.
+
+21. **Navegació entre pàgines**
+
+- Es va afegir funcionalitat de navegació entre pàgines perquè l'usuari pugui passar entre la llista de vídeos, sèries i
+  altres vistes relacionades.
+
+22. **Afegir contingut a `resources/markdown/terms`**
+
+- Es va afegir informació detallada sobre les tasques realitzades durant aquest Sprint a `resources/markdown/terms` per
+  mantenir la documentació actualitzada.
+
+23.**Comprovar amb Larastan**
+
+- Tots els fitxers creats durant aquest Sprint es van comprovar amb **Larastan** per garantir la qualitat del codi i
+  detectar possibles errors de tipus.
+
+---
+
+
+Aquest document resumeix el projecte i les tasques realitzades en els 6 primers sprints.

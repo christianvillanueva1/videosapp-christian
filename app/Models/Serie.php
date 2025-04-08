@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 use App\Models\Video;
-use Tests\Feature\Series\SeriesManageTest;
+use Tests\Unit\SerieTest;
 
 class Serie extends Model
 {
@@ -26,7 +26,7 @@ class Serie extends Model
     }
     public function testedBy()
     {
-        return SeriesManageTest::class;
+        return SerieTest::class;
     }
     public function getFormattedCreatedAtAttribute()
     {

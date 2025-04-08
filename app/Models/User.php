@@ -32,7 +32,7 @@ class User extends Authenticatable
 
     public function videos()
     {
-        return $this->hasMany(Video::class, 'user_id'); // Un usuari té molts vídeos
+        return $this->hasMany(Video::class, 'user_id');
     }
 
     public function isSuperAdmin(): bool

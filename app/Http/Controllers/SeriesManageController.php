@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Serie;
 use Illuminate\Http\Request;
-use Tests\Feature\Series\SeriesManageTest;
+use Tests\Feature\Series\SeriesManageControllerTest;
 
 class SeriesManageController extends Controller
 {
     public function testedBy()
     {
-        return SeriesManageTest::class;
+        return SeriesManageControllerTest::class;
     }
 
     public function index()

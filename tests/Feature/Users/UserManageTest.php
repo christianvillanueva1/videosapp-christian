@@ -88,6 +88,7 @@ class UserManageTest extends TestCase
             'name' => 'Nuevo Usuario',
             'email' => 'nuevo@usuario.com',
             'password' => 'password123',
+            'role' => 'super_admin', // Asignar rol de super_admin
         ];
 
         // Login como VideoManager con permisos
@@ -190,6 +191,7 @@ class UserManageTest extends TestCase
             'name' => 'Nombre actualizado',
             'email' => 'actualizado@usuario.com',
             'password' => 'newpassword123',
+            'role' => 'super_admin',
         ]);
 
         $response->assertStatus(302);

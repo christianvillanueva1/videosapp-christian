@@ -8,11 +8,19 @@ use Illuminate\Http\Request;
 class SeriesController extends Controller
 {
     // Llistar totes les sèries
-    public function index()
+    public function index(Request $request)
     {
-        $series = Serie::latest()->get();
+        $query = Serie::query();
+
+        if ($request->has('search')) {
+            $query->where('title', 'like', '%' . $request->search . '%');
+        }
+
+        $series = $query->paginate(12); // pots ajustar el número per pàgina
+
         return view('series.index', compact('series'));
     }
+
 
     // Mostrar una sèrie concreta
     public function show($id)
