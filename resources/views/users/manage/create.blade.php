@@ -29,6 +29,16 @@
                 <input type="password" name="password" class="form-control" data-qa="input-password" required>
             </div>
 
+            <div class="form-group">
+                <label for="role">Rol</label>
+                <select name="role" class="form-control" required>
+                    @foreach($roles as $role)
+                        <option value="{{ $role->name }}">{{ ucfirst($role->name) }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+
             <button type="submit" class="btn btn-create-user">Crear</button>
         </form>
     </div>

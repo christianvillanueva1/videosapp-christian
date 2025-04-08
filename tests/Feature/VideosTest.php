@@ -20,12 +20,14 @@ class VideosTest extends TestCase
 
     public function test_users_can_view_videos()
     {
+        $user = User::factory()->create();
         // Crear un video en la base de datos
         $video = Video::create([
             'title' => 'Video de prueba',
             'description' => 'Descripción del video',
             'url' => 'https://www.youtube.com/watch?v=gsLvizl5j4E&ab_channel=Mattye',
             'published_at' => Carbon::now(),
+            'user_id' => $user->id,
         ]);
 
         // Realizar una petición GET al endpoint de video

@@ -17,6 +17,18 @@
                 <input type="email" name="email" class="form-control input-edit" value="{{ $user->email }}" required>
             </div>
 
+            <div class="form-group">
+                <label for="role">Rol</label>
+                <select name="role" class="form-control" required>
+                    @foreach($roles as $role)
+                        <option value="{{ $role->name }}" {{ $user->hasRole($role->name) ? 'selected' : '' }}>
+                            {{ ucfirst($role->name) }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+
+
             <button type="submit" class="btn btn-update">Actualitzar</button>
         </form>
     </div>

@@ -17,6 +17,7 @@
                     <th>ID</th>
                     <th>Nom</th>
                     <th>Email</th>
+                    <th>Rol</th>
                     <th>Accions</th>
                 </tr>
                 </thead>
@@ -26,6 +27,8 @@
                         <td>{{ $user->id }}</td>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
+                        <td>{{ $user->getRoleNames()->first() }}</td>
+
                         <td>
                             <a href="{{ route('users.manage.edit', $user) }}" class="btn btn-warning btn-sm">Editar</a>
                             <form action="{{ route('users.manage.destroy', $user) }}" method="POST" style="display:inline;">

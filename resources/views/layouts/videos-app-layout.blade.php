@@ -87,6 +87,14 @@
         @if (Auth::check() && Auth::user()->can('manage-videos'))
             <li><a href="{{ route('videos.manage.index') }}">Gestió de Vídeos</a></li>
         @endif
+        @if (Auth::check())
+            <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Tancar Sessió</a></li>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
+        @else
+            <li><a href="{{ route('login') }}">Iniciar Sessió</a></li>
+        @endif
     </ul>
 </nav>
 
