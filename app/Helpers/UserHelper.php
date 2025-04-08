@@ -118,7 +118,8 @@ function create_permissions()
 {
     $permissions = [
         'manage users',
-        'manage videos'
+        'manage videos',
+        'manage series',
     ];
 
     foreach ($permissions as $permission) {

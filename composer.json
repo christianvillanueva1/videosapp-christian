@@ -32,7 +32,8 @@
         },
         "files": [
             "app/Helpers/UserHelper.php",
-            "app/Helpers/DefaultVideoHelper.php"
+            "app/Helpers/DefaultVideoHelper.php",
+            "app/Helpers/SeriesHelper.php"
         ]
     },
     "autoload-dev": {

@@ -20,6 +20,11 @@ class Video extends Model
         'user_id',
     ];
 
+    public function serie()
+    {
+        return $this->belongsTo(Serie::class, 'series_id');
+    }
+
     function getFormattedPublishedAtAttibute(){
         return Carbon::parse($this->published_at)->format('d m Y');
     }
