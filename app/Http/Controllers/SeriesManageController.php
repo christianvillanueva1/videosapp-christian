@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Serie;
+use App\Models\Video;
 use Illuminate\Http\Request;
 use Tests\Feature\Series\SeriesManageControllerTest;
 
@@ -69,6 +70,8 @@ class SeriesManageController extends Controller
 
     public function delete(Serie $serie)
     {
+        Video::where('series_id', $serie->id)->delete();
+
         $serie->delete();
         return redirect()->route('series.manage.index')->with('success', 'Sèrie eliminada correctament.');
     }
@@ -80,6 +83,7 @@ class SeriesManageController extends Controller
         if (!$serie) {
             return response()->json(['message' => 'Serie not found'], 404);
         }
+        Video::where('series_id', $serie->id)->delete();
 
         $serie->delete();
 

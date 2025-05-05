@@ -22,7 +22,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Gate::define('manage-videos', function (User $user) {
-            return $user->hasRole('video_manager') || $user->hasRole('super_admin') || $user->hasRole('regular');
+            return $user->hasRole('video_manager') || $user->hasRole('super_admin');
         });
 
         Gate::define('manage-users', function (User $user) {

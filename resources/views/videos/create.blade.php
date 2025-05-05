@@ -2,7 +2,7 @@
     <div class="container">
         <h1>Crear Vídeo</h1>
 
-        <form action="{{ route('videos.manage.store') }}" method="POST" data-qa="video-create-form">
+        <form action="{{ route('videos.store') }}" method="POST" data-qa="video-create-form">
             @csrf
             <div class="form-group">
                 <label for="title">Títol</label>

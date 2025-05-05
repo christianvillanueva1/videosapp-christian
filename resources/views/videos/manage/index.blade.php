@@ -22,6 +22,7 @@
                     <th>Anterior</th>
                     <th>Següent</th>
                     <th>Sèrie</th>
+                    <th>Usuari</th>
                     <th>Accions</th>
                 </tr>
                 </thead>
@@ -35,6 +36,8 @@
                         <td>{{ $video->previous }}</td>
                         <td>{{ $video->next }}</td>
                         <td>{{ $video->series_id }}</td>
+                        <td>{{ $video->user_id }}</td>
+
                         <td>
                             <a href="{{ route('videos.manage.edit', $video->id) }}" class="btn btn-warning btn-sm">Editar</a>
                             <form action="{{ route('videos.manage.destroy', $video->id) }}" method="POST" style="display:inline;">

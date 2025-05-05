@@ -17,7 +17,18 @@
             <li>Anterior vídeo: {{ $video['previous'] }}</li>
             <li>Següent vídeo: {{ $video['next'] }}</li>
             <li>ID de la sèrie: {{ $video['series_id'] }}</li>
+            <li>Usuari: {{ $video['user_id'] }}</li>
         </ul>
+        @if (auth()->user() && auth()->user()->id == $video['user_id'])
+            <div class="video-actions">
+                <a href="{{ route('videos.edit', $video['id']) }}" class="btn btn-warning">Editar</a>
+                <form action="{{ route('videos.destroy', $video['id']) }}" method="POST" style="display:inline;">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                </form>
+            </div>
+        @endif
     </div>
 </x-videos-app-layout>
 

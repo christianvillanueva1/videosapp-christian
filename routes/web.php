@@ -29,6 +29,13 @@ Route::middleware([
 // Rutes per a la visualització de vídeos
 Route::get('/video/{id}', [VideosController::class, 'show'])->name('videos.show');
 Route::get('/videos', [VideosController::class, 'index'])->name('videos.index');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/create', [VideosController::class, 'create'])->name('videos.create');
+    Route::post('/', [VideosController::class, 'store'])->name('videos.store');
+    Route::get('/{id}/edit', [VideosController::class, 'edit'])->name('videos.edit');
+    Route::put('/{id}', [VideosController::class, 'update'])->name('videos.update');
+    Route::delete('/{id}', [VideosController::class, 'destroy'])->name('videos.destroy');
+});
 
 // Rutes de gestió de vídeos amb protecció de permisos
 

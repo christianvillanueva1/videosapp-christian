@@ -1,7 +1,13 @@
 <x-videos-app-layout>
     <div class="container">
         <div class="row">
-            @foreach ($videos as $video)
+            @if (Auth::check())
+                <div class="col-12 mb-3">
+                    <a href="{{ route('videos.create') }}" class="btn btn-primary">Crear Vídeo</a>
+                </div>
+            @endif
+
+        @foreach ($videos as $video)
                 <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
                     <div class="card border-0 shadow-sm rounded" onclick="window.location='{{ route('videos.show', $video->id) }}'">
                         <!-- Miniatura com a imatge destacada -->
