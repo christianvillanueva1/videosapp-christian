@@ -4,6 +4,11 @@
         @if(session('success'))
             <div class="alert alert-success mt-3">{{ session('success') }}</div>
         @endif
+        @if (Auth::check())
+            <div class="col-12 mb-3">
+                <a href="{{ route('series.create') }}" class="btn btn-primary">Crear Serie</a>
+            </div>
+        @endif
 
         <!-- Formulari de cerca -->
         <form action="{{ route('series.index') }}" method="GET" class="mb-4">
