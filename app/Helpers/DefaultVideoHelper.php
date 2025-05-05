@@ -2,6 +2,7 @@
 
 namespace App\Helpers;
 
+use App\Events\VideoCreated;
 use App\Models\User;
 use App\Models\Video;
 use Carbon\Carbon;
@@ -29,7 +30,13 @@ class DefaultVideoHelper
 
         $data = array_merge($defaultData, $overrides);
 
-        return Video::create($data);
+        $video = Video::create($data);
+
+        // Disparar el evento de creación del vídeo
+        event(new VideoCreated($video));
+
+        // Retornar el vídeo creado
+        return $video;
     }
     public static function createDefaultVideo2(array $overrides = []){
 

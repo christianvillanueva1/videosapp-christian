@@ -455,5 +455,66 @@ com el títol, la descripció i l'URL.
 
 ---
 
+## Sprint 7
 
-Aquest document resumeix el projecte i les tasques realitzades en els 6 primers sprints.
+1. **Corregir els errors del 6è Sprint**:
+    - Es van corregir els errors detectats al Sprint 6, amb especial atenció a la correcta funcionalitat dels events de Pusher i l'enviament de notificacions.
+
+2. **Arreglar tests que fallen després de modificar el codi**:
+    - Es van revisar i actualitzar els tests dels sprints anteriors, arreglant qualsevol error que s'havia introduït després de les modificacions realitzades durant aquest Sprint.
+
+3. **Afegir funcionalitat per a que els usuaris regulars puguin crear sèries i afegir vídeos a la sèrie**:
+    - Els usuaris amb el rol corresponent van poder crear sèries i afegir vídeos a aquestes sèries. Es va afegir una lògica a nivell de controlador i validacions per gestionar les relacions correctament.
+
+4. **Crear l'event `VideoCreated` amb el constructor i `broadcastOn()`**:
+    - Es va crear l'event `VideoCreated` a l'arxiu `app/Events/VideoCreated.php` amb el constructor que rep el vídeo creat i la funció `broadcastOn()` que defineix el canal per on es transmetrà.
+
+5. **Disparar l'event al controlador de vídeos**:
+    - Al controlador de vídeos, es va disparar l'event `VideoCreated` després de crear un vídeo, per enviar una notificació als usuaris subscrits al canal `videos`.
+
+6. **Crear el listener `SendVideoCreatedNotification` i la funció `handle()`**:
+    - Es va crear el listener `SendVideoCreatedNotification` a l'arxiu `app/Listeners/SendVideoCreatedNotification.php`. Aquesta classe s'encarrega de gestionar l'enviament del correu electrònic als admins i de transmetre la notificació `VideoCreated` a través de Pusher.
+
+7. **Crear l'EventServiceProvider per registrar l'event i el listener**:
+    - Es va afegir la notificació de la creació del vídeo a l'`EventServiceProvider` per garantir que l'event i el listener siguin registrats i processats correctament.
+
+8. **Registrar-se a Mailtrap o Mailchimp per l'enviament de correus**:
+    - Es va registrar un compte a Mailtrap o Mailchimp per utilitzar un servidor de correus per enviar les notificacions per correu electrònic als admins.
+
+9. **Configurar el .env per utilitzar les credencials de Mailtrap/Mailchimp/EmailJs**:
+    - Es va configurar el fitxer `.env` per a utilitzar les credencials de Mailtrap o Mailchimp, assegurant la correcta configuració del servei d'enviament de correus electrònics.
+
+10. **Registrar-se a Pusher i configurar les credencials**:
+    - Es va registrar un compte a Pusher i es van configurar les credencials al fitxer `.env` per garantir que les notificacions de Pusher funcionessin correctament.
+
+11. **Revisar la configuració de Pusher a `config/broadcasting.php`**:
+    - Es va revisar la configuració de Pusher a `config/broadcasting.php` per assegurar-se que Pusher estava configurat com a controlador de broadcast per defecte.
+
+12. **Afegir la funció `broadcastAs()` a l'event `VideoCreated`**:
+    - Es va afegir la funció `broadcastAs()` a l'event `VideoCreated` per definir el nom personalitzat per l'event en la transmissió de Pusher.
+
+13. **Assegurar-se que Pusher transmet l'event a `SendVideoCreatedNotification.php`**:
+    - Es va assegurar que el listener `SendVideoCreatedNotification` transmetés correctament l'event utilitzant Pusher, per tal de mostrar les notificacions als usuaris subscrits.
+
+14. **Instal·lar Laravel Echo i Pusher JS a npm**:
+    - Es va instal·lar Laravel Echo i Pusher JS mitjançant npm per gestionar la comunicació en temps real entre el servidor i el client.
+
+15. **Configurar Laravel Echo a `resources/js/bootstrap.js`**:
+    - Es va configurar Laravel Echo a `resources/js/bootstrap.js` per establir la connexió amb Pusher des de la part frontal de l'aplicació.
+
+16. **Crear la vista de notificacions push**:
+    - Es va crear la vista de notificacions push per mostrar les notificacions que arribaven en temps real a l'usuari. Aquesta vista escoltava els events de Pusher i els mostrava en un element HTML.
+
+17. **Crear la ruta de notificacions**:
+    - Es va crear una ruta per mostrar la vista de notificacions push, que permetia als usuaris veure les notificacions en temps real.
+
+18. **Crear tests per validar les notificacions push**:
+    - Es van crear les funcions de test a `videoNotificationsTest` per validar que l'event `VideoCreated` s'enviava correctament i que la notificació push es lliurava als usuaris quan es creava un vídeo.
+
+19. **Afegir documentació al fitxer `resources/markdown/terms`**:
+    - Es va afegir informació sobre les funcionalitats implementades al Sprint 7 al fitxer `resources/markdown/terms`, actualitzant la documentació per reflectir els canvis.
+
+20. **Comprovar els fitxers creats amb Larastan**:
+    - Es va utilitzar Larastan per analitzar el codi creat durant el Sprint 7, assegurant-se que no hi haguessin errors de tipus i que el codi complís amb les millors pràctiques de Laravel.
+
+Aquest document resumeix el projecte i les tasques realitzades en els 7 primers sprints.

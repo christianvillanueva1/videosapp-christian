@@ -78,3 +78,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/serie/{id}', [SeriesController::class, 'show'])->name('series.show');
     Route::get('/series', [SeriesController::class, 'index'])->name('series.index');
 });
+
+// routes/web.php
+
+Route::get('/notifications', function () {
+    return view('notifications');
+});

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\VideoCreated;
 use App\Models\Serie;
 use Illuminate\Http\Request;
 use App\Models\Video;
+use Illuminate\Support\Facades\Event;
 use Tests\Feature\Videos\VideosManageControllerTest;
 
 class VideosManageController extends Controller
@@ -64,6 +66,8 @@ class VideosManageController extends Controller
             'series_id' => $validated['series_id'],
             'user_id' => auth()->id(),
         ]);
+
+        Event::dispatch(new VideoCreated($video));
 
         return redirect()->route('videos.manage.index')->with('success', 'Video created successfully');
     }
