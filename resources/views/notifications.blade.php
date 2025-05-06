@@ -11,7 +11,7 @@
             if (window.Echo) {
                 console.log('Echo cargado');
 
-                // Escuchar el evento 'video.created'
+                // Escuchar el evento 'v    ideo.created'
                 window.Echo.channel('videos')
                     .listen('video.created', (event) => {
                         console.log('Event recibido:', event);
