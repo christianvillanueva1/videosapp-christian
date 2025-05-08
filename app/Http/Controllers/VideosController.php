@@ -20,7 +20,7 @@ class VideosController extends Controller
     }
 
     public function show($id){
-        $video = Video::find($id);
+        $video = Video::find($id)::with(['serie', 'user'])->first();
 
         if(!$video){
             return response()->json([
@@ -71,7 +71,7 @@ class VideosController extends Controller
 
         Event::dispatch(new VideoCreated($video));
 
-        return redirect()->route('videos.index');
+        return redirect()->route('videos.index')->with('success', 'Video creat correctament');
     }
 
     public function edit($id)
@@ -110,7 +110,7 @@ class VideosController extends Controller
 
         $video->update($validated);
 
-        return redirect()->route('videos.index');
+        return redirect()->route('videos.index')->with('success', 'Video actualitzat correctament');
     }
 
     public function destroy($id)
@@ -125,6 +125,6 @@ class VideosController extends Controller
 
         $video->delete();
 
-        return redirect()->route('videos.index');
+        return redirect()->route('videos.index')->with('success', 'Video eliminat correctament');
     }
 }

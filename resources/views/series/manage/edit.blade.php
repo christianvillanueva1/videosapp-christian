@@ -1,3 +1,6 @@
+@vite(['resources/css/form.css', 'resources/css/global.css'])
+
+
 <x-videos-app-layout>
     <div class="container">
         <h1>Editar Sèrie: {{ $serie->title }}</h1>
@@ -36,25 +39,4 @@
             </div>
         </form>
     </div>
-
-    <style>
-        .container {
-            padding: 40px;
-            background-color: #f9f9f9;
-            border-radius: 8px;
-        }
-
-        .btn-create-user {
-            background-color: #007bff;
-            color: white;
-            font-size: 16px;
-            font-weight: 600;
-            padding: 12px 20px;
-            border-radius: 5px;
-        }
-
-        .btn-create-user:hover {
-            background-color: #0056b3;
-        }
-    </style>
 </x-videos-app-layout>

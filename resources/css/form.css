@@ -1,0 +1,102 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.container h1{
+    font-size: clamp(18px, 2.5vw, 30px);
+    margin-bottom: 20px;
+    color: var(--text-light);
+}
+
+
+.alert{
+    border: 2px solid var(--danger);
+    border-radius: 10px;
+    padding: 5px 10px;
+    background-color: var(--dark-surface);
+    color: var(--danger);
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+form{
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    gap: 20px;
+}
+
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+
+    label{
+        font-size: clamp(14px, 2vw, 20px);
+        color: var(--text-muted);
+        margin-bottom: 10px;
+    }
+
+    input{
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid var(--text-muted);
+        font-size: clamp(14px, 2vw, 20px);
+        color: var(--text-light);
+        background-color: var(--dark-bg);
+        transition: all 0.3s ease-in-out;
+    }
+
+    textarea{
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid var(--text-muted);
+        font-size: clamp(14px, 2vw, 20px);
+        color: var(--text-light);
+        background-color: var(--dark-bg);
+        transition: all 0.3s ease-in-out;
+    }
+
+    select{
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid var(--text-muted);
+        font-size: clamp(14px, 2vw, 20px);
+        color: var(--text-light);
+        background-color: var(--dark-bg);
+        transition: all 0.3s ease-in-out;
+    }
+
+}
+
+button{
+    margin: 10px;
+    background-color: var(--dark-surface);
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: var(--text-light);
+    text-decoration: none;
+
+}
+button:hover{
+    background-color: var(--dark-border);
+    transform: scale(1.02);
+    transition: transform 0.2s;
+}

@@ -1,15 +1,20 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+@vite(['resources/css/global.css', 'resources/css/welcome.css'])
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <x-welcome />
+
+<x-videos-app-layout>
+    <div class="container">
+        <h1>Benvingut a la meva aplicació de vídeos!</h1>
+        <p>Aquesta és una aplicació de demostració per gestionar vídeos, series i usuaris.</p>
+        <p>Utilitza el menú per navegar a través de les diferents seccions.</p>
+
+        <div class="features">
+            <h2>Funcionalitats</h2>
+            <div class="row">
+                <div><p>Gestió de vídeos</p></div>
+                <div><p>Gestió de series</p></div>
+                <div><p>Gestió d'usuaris</p></div>
+                <div><p>Autenticació i autorització</p></div>
             </div>
         </div>
     </div>
-</x-app-layout>
+</x-videos-app-layout>

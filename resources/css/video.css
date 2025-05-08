@@ -1,0 +1,44 @@
+.main-video-div{
+    width: 500px;
+    height: 400px;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+    iframe{
+        width: 500px;
+        height: 300px;
+        overflow: hidden;
+        border-radius: 10px;
+    }
+}
+
+.main-video-div:hover{
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    transform: scale(1.02);
+    transition: all 0.3s ease;
+}
+
+.video-data-info{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+
+    h5{
+        color: var(--text-light);
+        font-size: 18px;
+        margin: 0;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    p{
+        color: var(--text-muted);
+        font-size: 14px;
+        margin: 5px 0;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+}
