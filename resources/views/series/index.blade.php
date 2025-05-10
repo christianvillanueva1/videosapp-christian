@@ -29,7 +29,7 @@
             @forelse ($series as $serie)
                 <x-serie-card :serie="$serie"/>
             @empty
-                <p>No hi ha vídeos disponibles.</p>
+                <p>No hi ha series disponibles.</p>
             @endforelse
         </div>
     </div>

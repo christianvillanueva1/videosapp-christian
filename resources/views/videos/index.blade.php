@@ -18,7 +18,7 @@
         @forelse ($videos as $video)
             <x-video-card :video="$video"/>
         @empty
-            <p>No hi ha series disponibles.</p>
+            <p>No hi ha videos disponibles.</p>
         @endforelse
 
     </div>
