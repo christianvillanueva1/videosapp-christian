@@ -1,13 +1,18 @@
 .main-video-div{
-    width: 500px;
-    height: 400px;
+    width: 50%;
+    min-width: 100px;
+    max-width: 500px;
+    height: auto;
+    min-height: 100px;
+    max-height: 500px;
     margin: 10px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
 
     iframe{
-        width: 500px;
-        height: 300px;
+        width: 100%;
+        height: calc(65%);
         overflow: hidden;
         border-radius: 10px;
     }
@@ -36,7 +41,7 @@
     p{
         color: var(--text-muted);
         font-size: 14px;
-        margin: 5px 0;
+        margin: 5px 0 0;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;

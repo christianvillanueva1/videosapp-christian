@@ -1,7 +1,7 @@
-@vite(['resources/css/video-show.css', 'resources/css/global.css'])
+@vite(['resources/css/show.css', 'resources/css/global.css'])
 
 <x-videos-app-layout>
-    <div class="video-container">
+    <div class="container">
 
         <div class="video-frame">
             <iframe
@@ -11,10 +11,10 @@
                 allowfullscreen>
             </iframe>
         </div>
-        <a href="{{ $video['url'] }}" target="_blank" class="video-link">Mira el vídeo en una nova finestra</a>
-        <h1 class="video-title">{{ $video['title'] }}</h1>
-        <p class="video-description">{{ $video['description'] }}</p>
-        <ul class="video-info">
+        <a href="{{ $video['url'] }}" target="_blank" class="link">Mira el vídeo en una nova finestra</a>
+        <h1 class="title">{{ $video['title'] }}</h1>
+        <p class="description">{{ $video['description'] }}</p>
+        <ul class="info">
             <li>{{ \Carbon\Carbon::parse($video['published_at'])->format('d-m-Y') }}</li>
             <li>Anterior vídeo: {{ $video['previous'] }}</li>
             <li>Següent vídeo: {{ $video['next'] }}</li>

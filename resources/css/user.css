@@ -1,5 +1,5 @@
 .main-user-div{
-    width: auto;
+    width: 300px;
     height: 125px;
     display: flex;
     justify-content: center;
@@ -42,29 +42,33 @@
 
 }
 
-.user-info{
+.user-info {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: start;
     margin: 10px;
+    width: 100%;
+    max-width: 170px; /* Ajusta según lo que quede libre junto al avatar */
+}
 
-    h5{
-        font-size: 20px;
-        margin: 10px 0;
-        color: var(--text-light);
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-    }
+.user-info h5,
+.user-info p {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100%; /* Importante para que elipsis funcione */
+    display: block; /* Asegura que aplique el corte correctamente */
+}
 
-    p{
-        font-size: 15px;
-        margin: 10px 0;
-        color: var(--text-muted);
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-    }
+.user-info h5 {
+    font-size: 20px;
+    margin: 10px 0;
+    color: var(--text-light);
+}
 
+.user-info p {
+    font-size: 15px;
+    margin: 10px 0;
+    color: var(--text-muted);
 }
